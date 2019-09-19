@@ -6,13 +6,13 @@ ENV ZOOKEEPER_VERSION 3.4.14
 # Get Druid
 RUN mkdir -p /tmp \
     && cd /tmp/ \
-    && curl -fsLS "https://www.apache.org/dyn/closer.cgi?filename=/incubator/druid/$DRUID_VERSION/apache-druid-$DRUID_VERSION-bin.tar.gz&action=download" | tar xvz \
+    && curl -fsLS "https://archive.apache.org/dist/incubator/druid/${DRUID_VERSION}/apache-druid-${DRUID_VERSION}-bin.tar.gz" | tar xvz \
     && mv apache-druid-$DRUID_VERSION /opt/druid
 
 WORKDIR /opt/druid/
 
 # Zookeeper
-RUN curl -fsLS "https://www.apache.org/dyn/closer.cgi?filename=/zookeeper/zookeeper-$ZOOKEEPER_VERSION/zookeeper-$ZOOKEEPER_VERSION.tar.gz&action=download" | tar xvz \
+RUN curl -fsLS "https://archive.apache.org/dist/zookeeper/zookeeper-${ZOOKEEPER_VERSION}/zookeeper-${ZOOKEEPER_VERSION}.tar.gz" | tar xvz \
     && mv zookeeper-$ZOOKEEPER_VERSION zk
 
 ADD config/common.runtime.properties conf/druid/single-server/micro-quickstart/_common/common.runtime.properties
