@@ -1,7 +1,7 @@
 FROM openjdk:8
 
-ENV DRUID_VERSION 0.16.0-incubating
-ENV ZOOKEEPER_VERSION 3.4.14
+ENV DRUID_VERSION 0.20.0
+ENV ZOOKEEPER_VERSION 3.5
 
 # Get Druid
 RUN mkdir -p /tmp \
@@ -25,13 +25,13 @@ RUN bash -c "./bin/start-micro-quickstart &" && \
 # - 8081: HTTP (coordinator)
 # - 8082: HTTP (broker)
 # - 8083: HTTP (historical)
-# - 8090: HTTP (overlord)
+# - 8091: HTTP (middlemanager)
 # - 2181 2888 3888: ZooKeeper
 EXPOSE 8888
 EXPOSE 8081
 EXPOSE 8082
 EXPOSE 8083
-EXPOSE 8090
+EXPOSE 8091
 EXPOSE 2181 2888 3888
 
 ENTRYPOINT ./bin/start-micro-quickstart
