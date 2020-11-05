@@ -6,8 +6,8 @@ ENV ZOOKEEPER_VERSION 3.5.8
 # Get Druid
 RUN mkdir -p /tmp \
     && cd /tmp/ \
-    && curl -fsLS "https://downloads.apache.org/druid/$DRUID_VERSION/apache-druid-$DRUID_VERSION-bin.tar.gz&action=download" | tar xvz \
-    && mv apache-druid-$DRUID_VERSION /opt/druid
+    && curl -fsLS "https://downloads.apache.org/druid/0.20.0/apache-druid-0.20.0-bin.tar.gz&action=download" | tar xvz \
+    && mv apache-druid-0.20.0 /opt/druid
 
 WORKDIR /opt/druid/
 
