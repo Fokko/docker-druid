@@ -1,18 +1,18 @@
 FROM openjdk:8
 
 ENV DRUID_VERSION 0.20.0
-ENV ZOOKEEPER_VERSION 3.5
+ENV ZOOKEEPER_VERSION 3.5.8
 
 # Get Druid
 RUN mkdir -p /tmp \
     && cd /tmp/ \
-    && curl -fsLS "https://github.com/apache/druid/archive/druid-$DRUID_VERSION.tar.gz" | tar xvz \
-    && mv druid-druid-$DRUID_VERSION /opt/druid
+    && curl -fsLS "https://www.apache.org/dyn/closer.cgi?path=/druid/$DRUID_VERSION/apache-druid-$DRUID_VERSION-bin.tar.gz&action=download" | tar xvz \
+    && mv apache-druid-$DRUID_VERSION /opt/druid
 
 WORKDIR /opt/druid/
 
 # Zookeeper
-RUN curl -fsLS "https://www.apache.org/dyn/closer.cgi?filename=/zookeeper/zookeeper-$ZOOKEEPER_VERSION/zookeeper-$ZOOKEEPER_VERSION.tar.gz&action=download" | tar xvz \
+RUN curl -fsLS "https://downloads.apache.org/zookeeper/zookeeper-$ZOOKEEPER_VERSION/apache-zookeeper-$ZOOKEEPER_VERSION-bin.tar.gz&action=download" | tar xvz \
     && mv zookeeper-$ZOOKEEPER_VERSION zk
 
 ADD config/common.runtime.properties conf/druid/single-server/micro-quickstart/_common/common.runtime.properties
