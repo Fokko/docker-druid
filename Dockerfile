@@ -17,6 +17,8 @@ RUN curl -fsLS "https://downloads.apache.org/zookeeper/zookeeper-$ZOOKEEPER_VERS
 
 ADD config/common.runtime.properties conf/druid/single-server/micro-quickstart/_common/common.runtime.properties
 
+ADD config/mysql-connector-java-5.1.46.jar extensions/mysql-metadata-storage/mysql-connector-java-5.1.46.jar
+
 RUN bash -c "./bin/start-micro-quickstart &" && \
     ./bin/post-index-task --file quickstart/tutorial/wikipedia-index.json --url http://localhost:8081 --submit-timeout 600
 
